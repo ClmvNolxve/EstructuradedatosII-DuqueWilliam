@@ -1,0 +1,93 @@
+=== 1. VÉRTICES ===
+Vértice        Grado de entrada Grado de salida
+Borojó         1                2
+Chontaduro     1                2
+Curuba         1                1
+Feijoa         0                2
+Granadilla     2                1
+Guanábana      1                2
+Lulo           2                1
+Mango          3                1
+Maracuyá       2                1
+Mora           2                2
+Papaya         2                1
+Uchuva         1                2
+
+=== 2. ARISTAS ===
+No  Origen           Destino      Peso  Dirigida  Ponderada
+1   Lulo         ->  Maracuyá     8.0   Sí        Sí
+2   Maracuyá     ->  Mango        5.0   Sí        Sí
+3   Mango        ->  Lulo         3.0   Sí        Sí
+4   Mora         ->  Lulo         6.0   Sí        Sí
+5   Mora         ->  Uchuva       4.0   Sí        Sí
+6   Uchuva       ->  Curuba       7.0   Sí        Sí
+7   Curuba       ->  Granadilla   2.0   Sí        Sí
+8   Granadilla   ->  Maracuyá     9.0   Sí        Sí
+9   Guanábana    ->  Granadilla   5.0   Sí        Sí
+10  Papaya       ->  Mango        4.0   Sí        Sí
+11  Chontaduro   ->  Papaya       6.0   Sí        Sí
+12  Borojó       ->  Chontaduro   3.0   Sí        Sí
+13  Chontaduro   ->  Borojó       5.0   Sí        Sí
+14  Feijoa       ->  Mora         7.0   Sí        Sí
+15  Guanábana    ->  Mora         3.0   Sí        Sí
+16  Feijoa       ->  Guanábana    4.0   Sí        Sí
+17  Uchuva       ->  Mango        2.0   Sí        Sí
+18  Borojó       ->  Papaya       2.0   Sí        Sí
+Peso total 85.0
+
+=== 3. CLASIFICACIÓN DEL GRAFO ===
+G = (V, A) con |V| = 12 y |A| = 18
+Dirigido Sí. Todas las aristas van de un seguidor a la fruta que sigue
+Ponderado Sí. El peso son las interacciones por semana
+Cíclico Sí. Ciclo encontrado Mango -> Lulo -> Maracuyá -> Mango
+Débilmente conexo Sí. Ignorando la dirección se llega de cualquier fruta a otra
+Fuertemente conexo No. Siguiendo la dirección no siempre se llega
+Densidad 0.136. Disperso
+
+=== 4. EJERCICIO CONVERTIR NO DIRIGIDO EN DIRIGIDO ===
+Grafo original, dirigido
+    Vértices 12, aristas 18
+    Dirigido Sí, ponderado Sí, cíclico Sí, conexo Sí
+Versión sin dirección, amistad entre frutas
+    Vértices 12, aristas 17
+    Dirigido No, ponderado Sí, cíclico Sí, conexo Sí
+Versión sin dirección convertida otra vez en dirigida
+    Vértices 12, aristas 34
+    Dirigido Sí, ponderado Sí, cíclico Sí, conexo Sí
+
+Cada arista no dirigida se convierte en dos aristas dirigidas, una en cada sentido
+Se pierde quién seguía a quién y aparecen seguimientos que no existían
+Por ejemplo Lulo y Maracuyá. Antes solo Lulo seguía a Maracuyá. Ahora también Maracuyá sigue a Lulo: Sí (en el original era No)
+
+=== 5. EJERCICIO CICLOS ===
+Ciclo de tres frutas Mango -> Lulo -> Maracuyá -> Mango
+Ciclo de dos frutas Borojó -> Chontaduro -> Borojó: Sí
+
+=== 6. EJERCICIO DENSIDAD ===
+Aristas posibles en un grafo dirigido 12 x 11 = 132
+Aristas existentes 18, densidad 0.136
+
+=== 7. PRUEBAS ===
+OK     La red tiene 12 vértices y 18 aristas, más que el mínimo de 10 y 15
+OK     No se agrega una arista repetida
+OK     No se aceptan lazos ni vértices que no existen
+OK     Borojó y Chontaduro se siguen en los dos sentidos con dos aristas distintas
+OK     Grados de Mora, entrada 2 y salida 2
+OK     Grados de Mango, entrada 3 y salida 1
+OK     La suma de grados de entrada y la de salida son iguales al número de aristas
+OK     El peso total es 85
+OK     El grafo es dirigido y ponderado
+OK     El ciclo encontrado es válido y cada paso es una arista real
+OK     El ciclo es Mango, Lulo, Maracuyá, Mango
+OK     Es débilmente conexo pero no fuertemente conexo
+OK     La densidad es 18 sobre 132 y el grafo es disperso
+OK     Sin dirección quedan 12 vértices y 17 aristas porque Borojó y Chontaduro se funden
+OK     La arista fundida suma los pesos 3 y 5
+OK     Al volver a dirigir cada arista da dos, en total 34
+OK     La versión dirigida tiene seguimientos que el original no tenía
+OK     Un grafo dirigido sin ciclos se reconoce como acíclico
+OK     Un grafo no dirigido sin ciclos no cuenta como cíclico la arista de ida y vuelta
+OK     Un triángulo no dirigido sí es cíclico
+OK     Dos vértices sin aristas no forman un grafo conexo
+
+Pruebas superadas: 21 de 21

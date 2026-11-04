@@ -1,0 +1,83 @@
+=== 1. RED SOCIAL DE FRUTAS TÍPICAS DE COLOMBIA ===
+15 usuarios y 16 conexiones
+
+Borojó -> Chontaduro, Mamoncillo
+Chontaduro -> Borojó, Papaya
+Curuba -> Granadilla, Tomate de árbol, Uchuva
+Feijoa -> Guayaba, Mora
+Granadilla -> Curuba, Guanábana, Maracuyá
+Guanábana -> Granadilla
+Guayaba -> Feijoa, Mora
+Lulo -> Maracuyá, Mora
+Mamoncillo -> Borojó, Mango
+Mango -> Mamoncillo, Maracuyá, Papaya
+Maracuyá -> Granadilla, Lulo, Mango
+Mora -> Feijoa, Guayaba, Lulo
+Papaya -> Chontaduro, Mango
+Tomate de árbol -> Curuba
+Uchuva -> Curuba
+
+=== 2. RECORRIDO POR NIVELES DESDE BOROJÓ (BFS) ===
+Nivel 0  Borojó
+Nivel 1  Chontaduro, Mamoncillo
+Nivel 2  Papaya, Mango
+Nivel 3  Maracuyá
+Nivel 4  Granadilla, Lulo
+Nivel 5  Curuba, Guanábana, Mora
+Nivel 6  Tomate de árbol, Uchuva, Feijoa, Guayaba
+
+=== 3. NÚMERO MÍNIMO DE CONEXIONES ===
+Borojó a Uchuva
+    Borojó -> Mamoncillo -> Mango -> Maracuyá -> Granadilla -> Curuba -> Uchuva
+    Conexiones mínimas 6
+Chontaduro a Guayaba
+    Chontaduro -> Papaya -> Mango -> Maracuyá -> Lulo -> Mora -> Guayaba
+    Conexiones mínimas 6
+Lulo a Feijoa
+    Lulo -> Mora -> Feijoa
+    Conexiones mínimas 2
+Mango a Mango
+    Mango
+    Conexiones mínimas 0
+Borojó a Piña
+    Sin ruta o el usuario no existe
+
+=== 4. SEIS GRADOS DE SEPARACIÓN ===
+Usuario            Distancia al más lejano
+Borojó             6
+Chontaduro         6
+Curuba             5
+Feijoa             6
+Granadilla         4
+Guanábana          5
+Guayaba            6
+Lulo               4
+Mamoncillo         5
+Mango              4
+Maracuyá           3
+Mora               5
+Papaya             5
+Tomate de árbol    6
+Uchuva             6
+
+Distancia máxima entre cualquier par de usuarios: 6
+
+=== 5. PRUEBAS ===
+OK     La red tiene 15 usuarios y 16 conexiones
+OK     Las amistades van en los dos sentidos
+OK     Repetir una conexión no la duplica
+OK     Un usuario no puede conectarse consigo mismo
+OK     Distancia de un usuario a sí mismo = 0
+OK     Amigos directos están a distancia 1
+OK     Lulo a Feijoa = 2 conexiones (pasando por Mora)
+OK     Borojó a Uchuva = 6 conexiones
+OK     Camino más corto de Borojó a Uchuva
+OK     BFS elige el atajo: Borojó a Mango = 2 y no 3
+OK     Recorrido por niveles desde Borojó
+OK     La distancia es simétrica para todos los pares
+OK     Seis grados: ningún par de la red está a más de 6 conexiones
+OK     Usuario que no existe: distancia -1 y camino vacío
+OK     Recorrido de un usuario que no existe es vacío
+OK     Usuarios sin ruta entre sí: distancia -1
+
+Pruebas superadas: 16 de 16
